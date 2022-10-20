@@ -10,3 +10,15 @@ test('creates an intern role', () => {
     const intern = new Intern('2', 'Arthur', 'arthur@gmail.com');
     expect(intern.getRole()).toBe('Intern')
 })
+
+test('creates an icon', () => {
+    const icon = new Intern('2', 'Nicholas', 'nicholas@gmail.com');
+    expect(icon.getIcon()).toBe(`<span class="material-symbols-outlined">
+                    school
+                 </span>`)
+})
+
+test('creates school info', () => {
+    const school = new Intern('2', 'Nicholas', 'nicholas@gmail.com', 'Rice University');
+    expect(school.getExtraInfo()).toBe('School: Rice University')
+})
