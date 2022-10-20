@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const template = require('./src/page-template');
 
 const teamMembers = [];
 let addingUser = true;
@@ -26,23 +27,25 @@ const init = async () => {
 }
 
 function generateHtml() {
-    teamMembers.forEach(teamMember => {
-        console.log(teamMember.getId());
-        console.log(teamMember.getName());
-        console.log(teamMember.getEmail());
-        console.log(teamMember.getRole());
-        switch (teamMember.getRole()) {
-            case 'Intern':
-                console.log(teamMember.getSchool());
-                break;
-            case 'Engineer':
-                console.log(teamMember.getGithub());
-                break;
-            case 'Manager':
-                console.log(teamMember.getOfficeNumber());
-                break;
-        }
-    })
+    console.log(template(teamMembers));
+
+    // teamMembers.forEach(teamMember => {
+    //     console.log(teamMember.getId());
+    //     console.log(teamMember.getName());
+    //     console.log(teamMember.getEmail());
+    //     console.log(teamMember.getRole());
+    //     switch (teamMember.getRole()) {
+    //         case 'Intern':
+    //             console.log(teamMember.getSchool());
+    //             break;
+    //         case 'Engineer':
+    //             console.log(teamMember.getGithub());
+    //             break;
+    //         case 'Manager':
+    //             console.log(teamMember.getOfficeNumber());
+    //             break;
+    //     }
+    // })
 }
 
 

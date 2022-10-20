@@ -1,4 +1,4 @@
-const generateHtml = results => {
+const template = (teamMembers) => {
     return `
 < !DOCTYPE html >
     <html lang="en">
@@ -27,28 +27,7 @@ const generateHtml = results => {
                                     </div>
                                 </header>
                                 <main>
-                                    <div class="card mt-2" style="width: 18rem;">
-                                        <div class="card-body bg-info">
-                                            <h5 class="card-title">EMployee</h5>
-                                            <p class="card-text">
-                                                <span class="material-symbols-outlined">
-                                                    coffee
-                                                </span>
-                                                <span class="material-symbols-outlined">
-                                                    developer_mode
-                                                </span>
-                                                <span class="material-symbols-outlined">
-                                                    school
-                                                </span>and role</p>
-                                        </div>
-                                        <div class="card" style="width: 18rem;">
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">ID:${this.id} </li>
-                                                <li class="list-group-item">Email:${this.email} </li>
-                                                <li class="list-group-item">Vestibulum at eros</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                ${getCards(teamMembers)}
                                 </main>
                                 <footer class="container text-center py-3">
                                     <h5 class="text-dark">&copy;2022 Tatiana Bertazoli</h5>
@@ -57,3 +36,28 @@ const generateHtml = results => {
 
                         </html> `
 }
+
+function getCards(teamMembers) {
+    let result = '';
+    teamMembers.forEach(teamMember => {
+        result += `<div class="card mt-2" style="width: 18rem;">
+                <div class="card-body bg-info">
+                    <h5 class="card-title">${teamMember.getName()}</h5>
+                    <p class="card-text">
+                        ${teamMember.getIcon()}
+                        ${teamMember.getRole()}
+                    </p>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${teamMember.getId()}</li>
+                        <li class="list-group-item">Email: ${teamMember.getEmail()}</li>
+                        <li class="list-group-item">${teamMember.getExtraInfo()}</li>
+                    </ul>
+                </div>
+            </div>`
+    });
+    return result;
+}
+
+module.exports = template;
