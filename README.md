@@ -15,7 +15,7 @@
    - [Questions](#questions)
 
    ## Installation
-   Througn terminal. Make sure you have Node.js installed first. Then run the application.
+   Through terminal. Make sure you have Node.js installed first. Then run the application.
    
    ## Usage
    To run the application: type `node index.js` on the terminal.
@@ -41,6 +41,7 @@
    
    
    email: tatianabertazoli@gmail.com
+   
 
-   Video link: 
+   Video link: https://watch.screencastify.com/v/vDH52rQyqNMekt5uHgXL
     

@@ -13,9 +13,7 @@ test('get role method', () => {
 
 test('creates an icon', () => {
     const icon = new Manager('2', 'Nicholas', 'nicholas@gmail.com');
-    expect(icon.getIcon()).toBe(`<span class="material-symbols-outlined">
-                    coffee
-                </span>`)
+    expect(icon.getIcon()).toContain(`coffee`)
 })
 
 test('creates office Number', ()=> {

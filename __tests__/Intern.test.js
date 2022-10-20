@@ -13,9 +13,7 @@ test('creates an intern role', () => {
 
 test('creates an icon', () => {
     const icon = new Intern('2', 'Nicholas', 'nicholas@gmail.com');
-    expect(icon.getIcon()).toBe(`<span class="material-symbols-outlined">
-                    school
-                 </span>`)
+    expect(icon.getIcon()).toContain(`school`)
 })
 
 test('creates school info', () => {

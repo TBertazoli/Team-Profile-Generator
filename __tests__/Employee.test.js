@@ -14,8 +14,8 @@ test('creates an employee id', () => {
 
 test('creates an employee email', () => {
     const employee = new Employee('2', 'Arthur', 'arthur@gmail.com');
-    expect(employee.getEmail()).toBe('<a href=\"mailto:arthur@gmail.com\">arthur@gmail.com</a>'
-    )
+    expect(employee.getEmail()).toContain(`arthur@gmail.com`);
+
 })
 
 test('creates an employee role', () => {
