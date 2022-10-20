@@ -2,7 +2,10 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const fs = require('fs');
 const template = require('./src/page-template');
+
+
 
 const teamMembers = [];
 let addingUser = true;
@@ -23,29 +26,29 @@ const init = async () => {
         }
     } while (addingUser);
 
-    generateHtml();
+    generateHtml()
+
+
 }
 
 function generateHtml() {
-    console.log(template(teamMembers));
+      return writeToFile(template(teamMembers));
+}
 
-    // teamMembers.forEach(teamMember => {
-    //     console.log(teamMember.getId());
-    //     console.log(teamMember.getName());
-    //     console.log(teamMember.getEmail());
-    //     console.log(teamMember.getRole());
-    //     switch (teamMember.getRole()) {
-    //         case 'Intern':
-    //             console.log(teamMember.getSchool());
-    //             break;
-    //         case 'Engineer':
-    //             console.log(teamMember.getGithub());
-    //             break;
-    //         case 'Manager':
-    //             console.log(teamMember.getOfficeNumber());
-    //             break;
-    //     }
-    // })
+const writeToFile = (html) => {
+    console.log(html)
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/index.html',html, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'HTML page created'
+            });
+        });
+    });
 }
 
 
@@ -170,3 +173,4 @@ function getEngineer(employeeData) {
         return new Engineer(teamMembers.length, employeeData.name, employeeData.email, result.github);
     })
 }
+
