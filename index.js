@@ -92,18 +92,29 @@ function promptUser() {
                     }
                 },
                 {
+                    type: 'text',
+                    name: 'id',
+                    message: 'What is your employee ID?',
+                    validate: idInput => {
+                        if (idInput) {
+                            return true;
+                        } else {
+                            console.log('You must enter your ID')
+                            return false;
+                        }
+                    }
+                },
+                {
                     type: 'list',
                     name: 'role',
                     message: 'What is your Role?',
-                    choices: ['Manager', 'Engineer', 'Intern'],
+                    choices: ['Engineer', 'Intern'],
 
                 }
             ]).then((employeeData) => {
                 switch (employeeData.role) {
                     case 'Intern':
                         return getIntern(employeeData);
-                    case 'Manager':
-                        return getManager(employeeData);
                     case 'Engineer':
                         return getEngineer(employeeData);
                 }
@@ -130,7 +141,7 @@ function getIntern(employeeData) {
             }
         },
     ]).then((result) => {
-        return new Intern(teamMembers.length, employeeData.name, employeeData.email, result.school);
+        return new Intern(employeeData.id, employeeData.name, employeeData.email, result.school);
     });
 }
 
@@ -170,7 +181,7 @@ function getEngineer(employeeData) {
             }
         },
     ]).then((result) => {
-        return new Engineer(teamMembers.length, employeeData.name, employeeData.email, result.github);
+        return new Engineer(employeeData.id, employeeData.name, employeeData.email, result.github);
     })
 }
 
